@@ -75,7 +75,7 @@ export class Tokenizer implements IterableIterator<Token> {
         callback(token.value);
       }
 
-      if (token.value.type != "NULL" && !tokenizer.done) {
+      if (!tokenizer.done && token.value.type != "NULL") {
         tokens.push(token.value);
       }
     }
@@ -186,7 +186,7 @@ export class Tokenizer implements IterableIterator<Token> {
     }
 
     if (result && increment) this._index += result.match.length;
-    else this._index++;
+    else this._index += 1;
     return result;
   }
 
