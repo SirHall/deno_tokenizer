@@ -75,7 +75,7 @@ export class Tokenizer implements IterableIterator<Token> {
         callback(token.value);
       }
 
-      if (!tokenizer.done) {
+      if (token.value.type != "NULL" && !tokenizer.done) {
         tokens.push(token.value);
       }
     }
@@ -113,7 +113,8 @@ export class Tokenizer implements IterableIterator<Token> {
       };
     }
 
-    this.unexpectedCharacterError();
+    // this.unexpectedCharacterError();
+    return { done: false, value: { type: "NULL", match: "NULL", value: "NULL", groups: [], position: { start: this._index, end: this._index } } };
   }
 
   private scan(): Token | undefined {
