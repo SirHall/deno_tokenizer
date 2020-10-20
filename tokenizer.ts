@@ -186,6 +186,7 @@ export class Tokenizer implements IterableIterator<Token> {
     }
 
     if (result && increment) this._index += result.match.length;
+    else this._index++;
     return result;
   }
 
